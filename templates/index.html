@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>  
+    <title>Stories</title>
+    <style> </style>
+    <head>  
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'css/main.css') }}">
+    </head>
+    <body>
+        <a href="/restart">Back to the start</a>
+        <div class="grid-container">
+            <div class="grid-item"></div>
+
+            <div class="grid-item">                
+                {% if current_node.nodes["top"] %}
+                    <a href="/index/top">{{ current_node.nodes["top"] }}</a>
+                {% else %}
+                    <form class="cell" action="/add_node" method="post">
+                        <input type="text" name="sentence" value=""></br>
+                        <input type="hidden" name="node" value="top">
+                        <input type="submit" value="Submit">
+                    </form>
+                {% endif %}
+            </div>
+
+            <div class="grid-item"></div>
+
+            <div class="grid-item">                
+                {% if current_node.nodes["left"] %}
+                    <a href="/index/left">{{ current_node.nodes["left"] }}</a>
+                {% else %}
+                    <form class="cell" action="/add_node" method="post">
+                        <input type="text" name="sentence" value=""></br>
+                        <input type="hidden" name="node" value="left">
+                        <input type="submit" value="Submit">
+                    </form>
+                {% endif %}
+            </div>
+            
+            <div class="grid-item">                
+                {{ current_node.sentence }}
+            </div>
+
+            <div class="grid-item">                
+                {% if current_node.nodes["right"] %}
+                    <a href="/index/right">{{ current_node.nodes["right"] }}</a>
+                {% else %}
+                    <form class="cell" action="/add_node" method="post">
+                        <input type="text" name="sentence" value=""></br>
+                        <input type="hidden" name="node" value="right">
+                        <input type="submit" value="Submit">
+                    </form>
+                {% endif %}
+            </div>
+
+
+            <div class="grid-item"></div>
+
+            <div class="grid-item">                
+                {% if current_node.nodes["bottom"] %}
+                    <a href="/index/bottom">{{ current_node.nodes["bottom"] }}</a>
+                {% else %}
+                    <form class="cell" action="/add_node" method="post">
+                        <input type="text" name="sentence" value=""></br>
+                        <input type="hidden" name="node" value="bottom">
+                        <input type="submit" value="Submit">
+                    </form>
+                {% endif %}
+            </div>
+
+            <div class="grid-item"></div>
+        </div>
+    </body>
+</html>
